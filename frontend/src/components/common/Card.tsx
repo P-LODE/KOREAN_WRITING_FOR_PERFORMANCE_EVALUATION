@@ -3,9 +3,10 @@ import { theme } from "../../styles/theme";
 
 interface CardProps {
   children: React.ReactNode;
-  padding?: "sm" | "md" | "lg";
+  padding?: "sm" | "md" | "lg" | "xl";
   hover?: boolean;
   onClick?: () => void;
+  style?: React.CSSProperties;
 }
 
 const StyledCard = styled.div<{ padding: string; hover: boolean }>`
@@ -32,9 +33,10 @@ export function Card({
   padding = "lg",
   hover = false,
   onClick,
+  style,
 }: CardProps) {
   return (
-    <StyledCard padding={padding} hover={hover} onClick={onClick}>
+    <StyledCard padding={padding} hover={hover} onClick={onClick} style={style}>
       {children}
     </StyledCard>
   );

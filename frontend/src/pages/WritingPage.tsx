@@ -123,10 +123,12 @@ export function WritingPage() {
     .split(/[.!?]+/)
     .filter((s) => s.trim().length > 0).length;
 
-  const isCharOverLimit =
-    assignment.wordLimit && charCount > assignment.wordLimit;
-  const isSentenceOverLimit =
-    assignment.sentenceLimit && sentenceCount > assignment.sentenceLimit;
+  const isCharOverLimit = !!(
+    assignment.wordLimit && charCount > assignment.wordLimit
+  );
+  const isSentenceOverLimit = !!(
+    assignment.sentenceLimit && sentenceCount > assignment.sentenceLimit
+  );
 
   const handleSubmit = () => {
     if (!summaryText.trim()) {
