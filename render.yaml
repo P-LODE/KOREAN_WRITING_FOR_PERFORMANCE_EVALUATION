@@ -1,0 +1,22 @@
+databases:
+  - name: koreandb
+    plan: free
+    databaseName: korean
+    user: korean
+
+services:
+  - type: web
+    plan: free
+    name: korean
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn server.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: koreandb
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
