@@ -23,7 +23,6 @@
 | **Backend**  | Node.js (NestJS), Express Gateway, Supabase (DB + Auth)   |
 | **Database** | PostgreSQL (JSONB 기반 과제/첨삭 데이터 저장)             |
 | **Infra**    | Vercel (FE), Render (BE), Cloudflare CDN                  |
-| **AI/ML**    | OpenAI GPT-4o-mini (요약 피드백 및 자동 첨삭)             |
 | **Testing**  | Playwright (E2E), Vitest (Unit)                           |
 | **i18n**     | i18next + chrome.i18n (학원 확장 지원)                    |
 
@@ -32,8 +31,8 @@
 ## 🧩 주요 기능
 
 - 🧠 **학습 모듈**: 요약 개념 학습, 중심 문장 찾기, 문단 구조 퀴즈
-- ✍️ **글쓰기 모듈**: 실시간 AI 피드백 & 문장 수정 가이드
-- 📊 **평가 모듈**: 중심 내용·간결성·논리성 자동 평가 알고리즘
+- ✍️ **글쓰기 모듈**: 실시간 작성 지원 & 문장 가이드
+- 📊 **평가 모듈**: 교사의 수동 평가 및 첨삭 기능
 - 👩‍🏫 **교사용 대시보드**: 학생 진도, 첨삭 내역, 평가 결과 조회
 - 📱 **학생 대시보드**: 주차별 미션, 점수 그래프, 성장 리포트
 
@@ -41,13 +40,13 @@
 
 ## 🏗️ 개발 프로세스
 
-| 단계          | 기간       | 주요 내용                                        |
-| ------------- | ---------- | ------------------------------------------------ |
-| **1. 기획**   | Week 1–2   | 학습 플로우 설계, 요약 평가 기준 확립            |
-| **2. 디자인** | Week 3–4   | Figma UI/UX 설계 (아동 친화적 디자인)            |
-| **3. 개발**   | Week 5–10  | FE: React SPA / BE: NestJS + Supabase / GPT 연동 |
-| **4. 테스트** | Week 11–12 | Playwright 시나리오 테스트, 학원 파일럿 운영     |
-| **5. 배포**   | Week 13–   | CI/CD 자동화 (Vercel + Render), 로그 모니터링    |
+| 단계          | 기간       | 주요 내용                                     |
+| ------------- | ---------- | --------------------------------------------- |
+| **1. 기획**   | Week 1–2   | 학습 플로우 설계, 요약 평가 기준 확립         |
+| **2. 디자인** | Week 3–4   | Figma UI/UX 설계 (아동 친화적 디자인)         |
+| **3. 개발**   | Week 5–10  | FE: React SPA / BE: NestJS + Supabase 구축    |
+| **4. 테스트** | Week 11–12 | Playwright 시나리오 테스트, 학원 파일럿 운영  |
+| **5. 배포**   | Week 13–   | CI/CD 자동화 (Vercel + Render), 로그 모니터링 |
 
 ---
 
@@ -57,9 +56,7 @@
 graph TD
 A[사용자 브라우저] -->|REST API| B[Express Gateway]
 B --> C[Supabase DB]
-B --> D[OpenAI GPT API]
 C --> E[PostgreSQL 저장소]
-D --> F[AI Feedback Service]
 📊 데이터 구조 (예시)
 ts
 코드 복사
@@ -88,7 +85,7 @@ CI/CD: GitHub Actions → Vercel (FE), Render (BE)
 🎯 기대 효과
 수행평가 대비 실전 글쓰기 강화
 
-교사 첨삭 업무 자동화 및 효율화
+교사 첨삭 업무 효율화
 
 학생별 성장 데이터 시각화 기반 맞춤형 피드백
 
